@@ -1,0 +1,16 @@
+<% user = project_grant.user %>
+<tr>
+	<td>
+		<%= user.badge %>
+	</td>
+	<td>
+		<% if project_grant.status == :pending %>
+			<span class="label label-warning">Pending</span>
+		<% else %>
+			<label><input type="checkbox" /> Admin</label>
+		<% end %>
+	</td>
+	<td class="pull-right">
+		<a href="#" class="btn btn-small btn-danger">remove</a>
+	</td>
+</tr>

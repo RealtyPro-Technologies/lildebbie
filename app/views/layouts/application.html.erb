@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LilDebbie</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">LilDebbie</a>
+        <div class="nav-collapse">
+          <ul class="nav pull-right">
+            <li>
+              <%= current_user.badge %>
+            </li>
+            <li>
+              <%= link_to logout_path do %>
+                <i class="icon-off"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <% if flash[:error] -%>
+          <p class='alert alert-error'><%=h flash[:error] %></p>
+        <% end -%>
+        <% if flash[:notice] -%>
+          <p class='alert'><%=h flash[:notice] %></p>
+        <% end -%>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</body>
+</html>

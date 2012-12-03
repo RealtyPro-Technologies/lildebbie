@@ -1,0 +1,10 @@
+<%
+show_user = false unless defined? show_user
+if show_user
+	name = project.user.username + '/' + project.name
+else
+	name = project.name
+end
+%>
+
+<li><%= link_to name, project_path(project.user, project) %></li>

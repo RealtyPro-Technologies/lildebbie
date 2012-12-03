@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="span12">
+		<h1>Your Projects</h1>
+		<div>
+			<% if @my_projects.size > 0 %>
+				<ul>
+				<%= render partial: 'projects/project_list', collection: @my_projects, as: :project %>
+				</ul>
+			<% else %>
+				No projects.
+			<% end %>
+		</div>
+		<%= link_to 'New Project', new_project_path, class: 'btn btn-inverse' %>
+		<h1>Shared Projects</h1>
+		<div>
+			<% if @shared_projects.size > 0 %>
+				<ul>
+				<%= render partial: 'projects/project_list', collection: @shared_projects, as: :project, locals: {show_user: true} %>
+				</ul>
+			<% else %>
+				No shared projects.
+			<% end %>
+		</div>
+	</div>
+</div>

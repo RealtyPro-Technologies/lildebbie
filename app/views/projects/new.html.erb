@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="span12">
+		<h1>Create Project</h1>
+		<%= form_for @project, url: new_project_path do |f| %>
+			<div>
+				<%= current_user.badge %> / <%= f.text_field :name %>
+			</div>
+			<div>
+				<div class="form-actions">
+					<%= f.submit 'Create project', class: 'btn btn-primary' %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

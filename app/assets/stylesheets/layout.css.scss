@@ -1,0 +1,43 @@
+body { padding-top: 60px; }
+
+.dropdown-menu.login {
+	padding: 15px; padding-bottom: 0px;
+}
+
+form.login {
+	input[type="text"], input[type="password"] {
+		margin-bottom: 15px;
+	}
+
+	input[type="checkbox"] {
+		float: left;
+		margin-right: 10px;
+	}
+
+	input.btn {
+		clear: left;
+		width: 100%;
+		height: 32px;
+		font-size: 13px;
+	}
+}
+
+.none {
+	color: #aaa;
+	font-style: italic;
+}
+
+.user-badge {
+	font-family: Arial;
+	font-weight: bold;
+
+	.navbar .nav > li > & {
+		float: none;
+		display: block;
+		padding: 10px 15px 10px;
+
+		a {
+			color: $navbarLinkColor;
+		}
+	}
+}
