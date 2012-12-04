@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 	def index
 		@user = UserDecorator.decorate(User.where(:username => params[:username]).first)
 
-		if @user.nil?
+		unless @user.present?
 			raise ActionController::RoutingError.new('Not Found')
 		end
 
