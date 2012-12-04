@@ -3,6 +3,11 @@ class ProjectsController < ApplicationController
 
 	def index
 		@user = UserDecorator.decorate(User.where(:username => params[:username]).first)
+
+		if @user.nil?
+			raise ActionController::RoutingError.new('Not Found')
+		end
+
 		@projects = ProjectDecorator.decorate(@user.projects)
 	end
 
