@@ -9,13 +9,14 @@ class UsersController < ApplicationController
 		invitation = Invitation.where(code: params[:invitation_code], accepted_at: nil).first
 
 		if invitation.nil?
-			raise 'Invalid invitation code!'
+			flash.now[:error] = 'Invalid invitation code.'
+			render 'new'
 		end
 
 		if @user.save
 			invitation.accepted_at = DateTime.now
 			invitation.save
-			
+
 			redirect_to root_url
 		else
 			render 'new'
