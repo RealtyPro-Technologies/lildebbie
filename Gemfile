@@ -5,8 +5,13 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-gem 'sqlite3'
+group :production do
+	gem 'mysql2'
+end
+
+group :development do
+	gem 'sqlite3'
+end
 
 gem 'coffee-rails', '~> 3.2.1'
 gem 'strong_parameters'
@@ -41,6 +46,7 @@ gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano', :require => false
 
 # To use debugger
 # gem 'debugger'

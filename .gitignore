@@ -15,5 +15,6 @@
 /tmp
 
 /config/env_vars.rb
+/config/database.yml
 
 *.sublime-*

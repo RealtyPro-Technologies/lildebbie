@@ -13,8 +13,8 @@ set :git_enable_submodules, 1
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-set :deploy_to, "/home/api/lildebbie"
-set :user, "api"
+set :deploy_to, "/home/rptauth/lildebbie"
+set :user, "rptauth"
 set :use_sudo, false
 
 # Load RVM's capistrano plugin.
@@ -33,6 +33,7 @@ require "rvm/capistrano"
 # If you are using Passenger mod_rails uncomment this:
 before "deploy:restart" do
 	run "ln -nfs #{shared_path}/env_vars.rb #{release_path}/config/env_vars.rb"
+	run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
 end
 
 namespace :deploy do
