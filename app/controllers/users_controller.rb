@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
 		if invitation.nil?
 			flash.now[:error] = 'Invalid invitation code.'
-			render 'new'
+			return render 'new'
 		end
 
 		if @user.save
