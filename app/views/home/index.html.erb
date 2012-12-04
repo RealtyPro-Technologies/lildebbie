@@ -21,5 +21,10 @@
 				No shared projects.
 			<% end %>
 		</div>
+		<h3>Send invitation</h3>
+		<%= form_for @invitation, remote: true do |f| %>
+		<%= f.email_field :email %>
+		<%= f.submit 'Send' %>
+		<% end %>
 	</div>
 </div>

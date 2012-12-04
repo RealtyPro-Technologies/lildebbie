@@ -5,11 +5,14 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'mysql2'
 gem 'sqlite3'
 
 gem 'coffee-rails', '~> 3.2.1'
 gem 'strong_parameters'
 gem 'draper'
+
+gem 'sendgrid_toolkit', '>= 1.1.1'
 
 gem 'twitter_bootstrap_form_for'
 

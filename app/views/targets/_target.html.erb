@@ -1,0 +1,14 @@
+<tr data-id="<%= target.id %>">
+	<td>
+		<% if target.active? %>
+			<%= button_to 'Active', activate_project_target_path(target.project.user, target.project, target), method: :put, class: 'btn btn-primary btn-small active-target disabled', remote: true %>
+		<% else %>
+			<%= button_to 'Activate', activate_project_target_path(target.project.user, target.project, target), method: :put, class: 'btn btn-primary btn-small active-target', remote: true %>
+		<% end %>
+	</td>
+	<td><%= target.url %></td>
+	<td>
+		<%= link_to 'delete', project_target_path(target.project.user, target.project, target), class: 'btn btn-small btn-danger', method: :delete, confirm: 'Are you sure?', remote: true %>
+		<%= link_to 'edit', edit_project_target_path(target.project.user, target.project, target), class: 'btn btn-small', remote: true %>
+	</td>
+</tr>

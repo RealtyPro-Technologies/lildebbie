@@ -1,0 +1,18 @@
+<%
+if target.persisted?
+	form_url = project_target_path(target.project.user, target.project, target)
+	confirm_btn = 'Edit'
+else
+	form_url = project_targets_path(target.project.user, target.project)
+	confirm_btn = 'Create'
+end
+%>
+<%= twitter_bootstrap_form_for target, class: 'form-horizontal', url: form_url, remote: true do |f| %>
+	<%= f.text_field :url %>
+	<%= f.actions do %>
+		<div class="pull-right">
+	    <%= f.submit 'Cancel', class: 'btn cancel' %>
+			<%= f.submit confirm_btn, class: 'btn btn-primary' %>
+	  </div>
+  <% end %>
+<% end %>

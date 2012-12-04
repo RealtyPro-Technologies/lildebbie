@@ -2,9 +2,6 @@
 link_to_project ||= false
 %>
 <div class="pull-right" style="line-height: 40px; margin: 10px 0;">
-	<%= link_to project_admin_path(project.user, project), class: "btn" do %>
-		<i class="icon-wrench"></i> Admin
-	<% end %>
 </div>
 <h3>
 	<%= project.user.badge %> /

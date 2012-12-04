@@ -41,3 +41,18 @@ form.login {
 		}
 	}
 }
+
+#target-overlay {
+	background-color:#000;
+}
+
+#target-container {
+	form {
+		width: 600;
+		height: 400;
+	}
+	background-color:#ddd;
+	color:#333;
+	padding: 32px;
+	border-radius: 5px;
+}

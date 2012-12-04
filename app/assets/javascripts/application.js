@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.autocomplete
+//= require jquery.simplemodal
 //= require_tree .

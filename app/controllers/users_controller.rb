@@ -5,7 +5,17 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+
+		invitation = Invitation.where(code: params[:invitation_code], accepted_at: nil).first
+
+		if invitation.nil?
+			raise 'Invalid invitation code!'
+		end
+
 		if @user.save
+			invitation.accepted_at = DateTime.now
+			invitation.save
+			
 			redirect_to root_url
 		else
 			render 'new'

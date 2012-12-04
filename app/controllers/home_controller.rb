@@ -5,5 +5,6 @@ class HomeController < ApplicationController
 		end
 		@my_projects = ProjectDecorator.decorate(current_user.projects)
 		@shared_projects = ProjectDecorator.decorate(current_user.shared_projects)
+		@invitation = Invitation.new
 	end
 end

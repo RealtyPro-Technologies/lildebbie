@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+	before_filter :authenticate_user!
+
 	def index
 		@user = UserDecorator.decorate(User.where(:username => params[:username]).first)
 		@projects = ProjectDecorator.decorate(@user.projects)
@@ -10,10 +12,8 @@ class ProjectsController < ApplicationController
 		unless @project.present?
 			raise ActionController::RoutingError.new('Not Found')
 		end
-	end
 
-	def admin
-		@project = ProjectDecorator.find(params[:username], params[:projectname])
+		@targets = @project.model.targets.where(user_id: current_user.id)
 		@new_grant = ProjectGrant.new
 	end
 
@@ -39,6 +39,20 @@ class ProjectsController < ApplicationController
 		else
 			render json: @project.errors, status_code: 403
 		end
+	end
+
+	def auth
+		@project = Project.find(params[:username], params[:projectname])
+
+		@target = @project.targets.where(user_id: current_user.id, active: true).first
+		
+		url = @target.url
+
+		if request.query_parameters.size > 0
+			url += "?#{request.query_parameters.to_param}"
+		end
+
+		redirect_to url
 	end
 
 	private

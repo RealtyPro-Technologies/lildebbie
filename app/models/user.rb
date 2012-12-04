@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 	has_many :project_grants
 
 	attr_accessor :password, :invitation_code
-	attr_accessible :username, :email, :password, :password_confirmation, :invitation_code
+	attr_accessible :username, :email, :password, :password_confirmation
 	before_save :encrypt_password
 
 	validates :username,

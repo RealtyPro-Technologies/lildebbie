@@ -22,4 +22,19 @@ class ApplicationController < ActionController::Base
 			'no_user'
 		end
 	end
+
+	def authenticate_user!
+		if not logged_in?
+			return redirect_to root_url
+		end
+
+		if params[:projectname].present?
+			project = Project.find(params[:username], params[:projectname])
+			if project.owner_id != current_user.id
+				if project.project_grants.where(user_id: current_user.id).count == 0
+					return redirect_to root_url
+				end
+			end
+		end
+	end
 end

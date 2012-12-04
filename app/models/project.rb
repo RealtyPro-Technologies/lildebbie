@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 	belongs_to :user, foreign_key: 'owner_id'
 	has_many :project_grants
+	has_many :targets
 
 	attr_accessible :name
 
