@@ -1,5 +1,6 @@
 class UserDecorator < ApplicationDecorator
-	decorates :projects
+	decorates :user
+	decorates_association :projects
 
 	def badge(options={})
 		h.content_tag :span, class: 'user-badge' do
