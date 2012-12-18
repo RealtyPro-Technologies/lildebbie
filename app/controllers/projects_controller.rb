@@ -49,8 +49,11 @@ class ProjectsController < ApplicationController
 	def auth
 		@project = Project.find(params[:username], params[:projectname])
 
-		@target = @project.targets.where(user_id: current_user.id, active: true).first
-		
+		if current_user
+			@target = @project.targets.where(user_id: current_user.id, active: true).first
+		else
+			@target = @project.targets.where(user_id: @project.user_id, active: true).first
+		end
 		url = @target.url
 
 		if request.query_parameters.size > 0
