@@ -12,4 +12,9 @@ class Project < ActiveRecord::Base
 	def to_param
 		self.name
 	end
+
+	def active_target(user = nil)
+		user ||= self.user
+		self.targets.where(user_id: user.id, active: true).first
+	end
 end
